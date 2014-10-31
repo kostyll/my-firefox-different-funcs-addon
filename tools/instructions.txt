@@ -1,0 +1,24 @@
+What's next?
+
+To get a feel for some of the things you can do with the SDK APIs, try working through some of the tutorials.
+Advanced techniques
+Overriding the built-in modules
+
+The SDK modules you use to implement your add-on are built into Firefox. When you run or package an add-on using cfx run or cfx xpi, the add-on will use the versions of the modules in the version of Firefox that hosts it.
+
+As an add-on developer, this is usually what you want. But if you're developing the SDK modules themselves, of course, it isn't. In this case it's assumed that you have checked out the SDK from its GitHub repo and will have run the bin/activate script from the root of your checkout.
+
+Then when you invoke cfx run or cfx xpi, you pass the "-o" option:
+
+cfx run -o
+
+This instructs cfx to use the local copies of the SDK modules, not the ones in Firefox.
+Developing without cfx run
+
+Because cfx run restarts the browser each time you invoke it, it can be a little cumbersome if you are making very frequent changes to an add-on. An alternative development model is to use the Extension Auto-Installer add-on(https://addons.mozilla.org/en-US/firefox/addon/autoinstaller/): this listens for new XPI files on a specified port and installs them automatically. That way you can test new changes without needing to restart the browser:
+
+    make a change to your add-on
+    run cfx xpi
+    post the add-on to the port specified
+
+while true ; do cfx xpi ; wget --post-file=codesy.xpi http://localhost:8888/ ; sleep 5 ; done

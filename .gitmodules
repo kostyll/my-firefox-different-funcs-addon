@@ -1,3 +1,6 @@
 [submodule "data/thirdparty/summary.js"]
 	path = data/thirdparty/summary.js
 	url = git@github.com:kostyll/summary.js.git
+[submodule "tools/addon-sdk"]
+	path = tools/addon-sdk
+	url = git@github.com:mozilla/addon-sdk.git
